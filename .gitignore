@@ -24,7 +24,7 @@ DerivedData
 
 # Android/IntelliJ
 #
-build/
+/android/build/
 .idea
 .gradle
 local.properties
@@ -72,3 +72,11 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Exclude build directories but not your source code directories
+/build/
+!/components/
+/redux/
+
+# Ensure .gitignore does not exclude your code
+!.gitignore

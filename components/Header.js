@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -9,7 +9,11 @@ import {useSelector} from 'react-redux';
 
 const Header = () => {
   const cardData = useSelector(state => state.reducer);
-  console.warn(cardData);
+
+  const [cardItems, setCardItems] = useState(0);
+  useEffect(() => {
+    setCardItems(cardData.length);
+  }, [cardData]);
   return (
     <View style={styles.container}>
       <Text
@@ -19,9 +23,18 @@ const Header = () => {
           padding: 10,
           backgroundColor: 'orange',
           color: 'black',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
-        {' '}
-        0{' '}
+        <View
+          style={{
+            backgroundColor: 'brown',
+            borderRadius: 10,
+            height: 40,
+            width: 40,
+          }}>
+          <Text style={{fontSize: 30, color: 'white'}}>{cardItems}</Text>
+        </View>
       </Text>
     </View>
   );
