@@ -21,12 +21,13 @@ const Product = props => {
   };
 
   useEffect(() => {
-    if (cartItems && cartItems.length) {
-      cartItems.forEach(element => {
-        if (element.name === item.name) {
-          setIsAdded(true);
-        }
-      });
+    let result = cartItems.filter((element)=>{
+return element.name=== item.name
+    });
+    if (result.length){
+      setIsAdded(true)
+    }else{
+      setIsAdded(false)
     }
   }, [cartItems]);
 
