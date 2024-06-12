@@ -10,7 +10,7 @@ import {getUserList} from './reduxComponent/action';
 
 const UserList = () => {
   const dispatch = useDispatch();
-  const userList = useSelector(state => state.reducer);
+  const userList = useSelector((state) => state.reducer);
 
   useEffect(() => {
     dispatch(getUserList());
@@ -18,12 +18,11 @@ const UserList = () => {
   console.warn('in component', userList);
   return (
     <View style={styles.container}>
-      {
-        userList.length?
-        userList.map((item) =>(
-            <Text style={{fontSize:20}}>{item.firstName}</Text>
-        )):null
-      }
+      {userList.length
+        ? userList.map(item => (
+            <Text style={{fontSize: 20}}>name {item.firstName}</Text>
+          ))
+        : null}
     </View>
   );
 };
